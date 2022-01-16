@@ -67,4 +67,8 @@ Huom
 Tämä toimi windowsissa:
 winpty docker exec modest_meitner bash
 nano /usr/src/app/index.js
+<<<<<<< HEAD
 winpty docker restart modest_meitner
+=======
+winpty docker restart modest_meitner
+>>>>>>> 6eed7d100f6ab4a42451245e3680141c84f0147c
