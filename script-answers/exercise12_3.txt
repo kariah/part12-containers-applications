@@ -1,0 +1,70 @@
+$ winpty docker run -it ubuntu bash
+
+root@915f865da821:/# apt-get update
+apt-get update
+Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal InRelease [265 kB]
+Get:3 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1385 kB]
+Get:5 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:6 http://archive.ubuntu.com/ubuntu focal/restricted amd64 Packages [33.4 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal/main amd64 Packages [1275 kB]
+Get:8 http://archive.ubuntu.com/ubuntu focal/multiverse amd64 Packages [177 kB]
+Get:9 http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages [11.3 MB]
+Get:10 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [30.1 kB]
+Get:11 http://security.ubuntu.com/ubuntu focal-security/universe amd64 Packages [837 kB]
+Get:12 http://security.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [790 kB]
+Get:13 http://archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1814 kB]
+Get:14 http://archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [1118 kB]
+Get:15 http://archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [859 kB]
+Get:16 http://archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [33.7 kB]
+Get:17 http://archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [22.1 kB]
+Get:18 http://archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [50.8 kB]
+Fetched 20.4 MB in 14s (1442 kB/s)
+Reading package lists... Done
+root@915f865da821:/# apt-get -y install nano
+apt-get -y install nano
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 269 kB of archives.
+After this operation, 868 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 nano amd64 4.8-1ubuntu1 [269 kB]
+Fetched 269 kB in 0s (686 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nano.
+(Reading database ... 4127 files and directories currently installed.)
+Preparing to unpack .../nano_4.8-1ubuntu1_amd64.deb ...
+Unpacking nano (4.8-1ubuntu1) ...
+Setting up nano (4.8-1ubuntu1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) doesn't exist
+root@915f865da821:/# nano /usr/src/app/index.js
+
+
+
+root@915f865da821:/# cd usr
+root@915f865da821:/# cd src 
+root@915f865da821:/# mkdir app
+root@915f865da821:/# cd app
+
+root@915f865da821:/# touch index.js
+
+*past console.log('Hello World')*
+
+ctrl+x
+exit
+
+
+Huom
+Tämä toimi windowsissa:
+winpty docker exec modest_meitner bash
+nano /usr/src/app/index.js
+winpty docker restart modest_meitner
