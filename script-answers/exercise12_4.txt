@@ -1,0 +1,17 @@
+docker container ls -a
+
+docker start -i modest_meitner
+
+root@3af74a699e13:/# cd usr
+cd usr
+root@3af74a699e13:/usr# cd src
+cd src
+root@3af74a699e13:/usr/src# cd app
+cd app
+
+apt install -y nodejs
+
+$ docker start -i modest_meitner
+root@3af74a699e13:/# node /usr/src/app/index.js
+node /usr/src/app/index.js
+Hello World
