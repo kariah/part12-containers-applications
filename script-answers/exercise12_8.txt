@@ -1,0 +1,54 @@
+$ docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                     NAMES
+49510bad5549   mongo     "docker-entrypoint.s…"   3 minutes ago    Up 3 minutes    0.0.0.0:3456->27017/tcp   todo-backend_mongo_1
+7d93c7c190de   nginx     "/docker-entrypoint.…"   22 minutes ago   Up 22 minutes   0.0.0.0:8080->80/tcp      crazy_mendel
+
+T430@DESKTOP-RH9VB0I MINGW64 ~/fso2021-kurssi/osa12/part12-containers-applications/todo-app/todo-backend (main)
+T430@DESKTOP-RH9VB0I MINGW64 ~/fso2021-kurssi/osa12/part12-containers-applications/todo-app/todo-backend (main)
+
+$ winpty docker exec -it todo-backend_mongo_1 bash
+root@49510bad5549:/# mongo -u root -p example
+MongoDB shell version v5.0.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("aed8ad63-6438-4a70-93a8-08473abb50d5") }
+MongoDB server version: 5.0.6
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-02-12T07:50:54.965+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mon
+godb.org/core/prodnotes-filesystem
+        2022-02-12T07:50:56.192+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never'
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+		
+---
+> show dbs
+admin     0.000GB
+config    0.000GB
+database  0.000GB
+local     0.000GB
+> use database
+switched to db database
+> show collections
+todos
+> db.todos.find({})
+{ "_id" : ObjectId("620766dd7131cc5dbdd2ff84"), "text" : "Write code", "done" : true }
+{ "_id" : ObjectId("620766dd7131cc5dbdd2ff85"), "text" : "Learn about containers", "done" : false }
+
+
+
