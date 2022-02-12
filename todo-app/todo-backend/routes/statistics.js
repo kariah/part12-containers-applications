@@ -11,14 +11,4 @@ router.get('/', async (_, res) => {
       });
 });
 
-// router.get('/', async (req, res) => { 
-  
-//     // console.log('req.todo (get) ', req.todo)
-  
-//     // res.send(req.todo)   
-
-//     const result = await redis.getAsync("todos");
-//     console.log('todos 2', result)  
-//   });
-
 module.exports = router;
