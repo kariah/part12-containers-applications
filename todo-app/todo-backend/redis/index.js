@@ -4,6 +4,7 @@ const { REDIS_URL } = require('../util/config')
 
 let getAsync
 let setAsync
+ 
 
 if (!REDIS_URL) {
   const redisIsDisabled = () => {
@@ -12,11 +13,18 @@ if (!REDIS_URL) {
   }
   getAsync = redisIsDisabled
   setAsync = redisIsDisabled
-} else {
+} else { 
+  
+  let visits = 0
+
   const client = redis.createClient({
-    url: REDIS_URL
+    url: REDIS_URL 
   })
-    
+ 
+  // visits ++
+
+  console.log(visits)
+
   getAsync = promisify(client.get).bind(client)
   setAsync = promisify(client.set).bind(client)    
 }
@@ -25,3 +33,18 @@ module.exports = {
   getAsync,
   setAsync
 }
+
+
+
+// let visits = 0
+
+
+// /* GET index data. */
+// router.get('/', async (req, res) => {
+//   visits++
+
+//   res.send({
+//     ...configs,
+//     visits
+//   });
+// });
