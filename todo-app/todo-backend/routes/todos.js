@@ -19,8 +19,9 @@ router.post('/', async (req, res) => {
    
   todos++
   redis.setAsync('todos', todos)
-  const result = await redis.getAsync("todos");
-  console.log('todos', result)  
+
+  // const result = await redis.getAsync("todos");
+  // console.log('todos', result)  
   
   res.send(todo);
 });
