@@ -12,8 +12,10 @@ router.get('/', async (_, res) => {
 
 /* POST todo to listing. */
 router.post('/', async (req, res) => { 
-  todos = await redis.getAsync("todos");
+  todos = await redis.getAsync("todos"); 
 
+  todos = todos == null ? 0 : todos
+  
   // console.log('todos 1', todos)  
 
   const todo = await Todo.create({
