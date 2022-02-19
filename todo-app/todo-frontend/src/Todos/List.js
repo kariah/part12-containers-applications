@@ -34,6 +34,7 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
         )
 
         return (
+          //tämä ToDo-komponenttiin
           <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
             <span>
               {todo.text} 
