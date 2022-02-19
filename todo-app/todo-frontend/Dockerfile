@@ -10,6 +10,6 @@ RUN npm ci
 
 ENV DEBUG=playground:*
 
-ENV PORT=3001
+ENV REACT_APP_BACKEND_URL=http://localhost:3001/
 
 CMD npm start
