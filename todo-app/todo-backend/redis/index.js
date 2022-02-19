@@ -14,9 +14,7 @@ if (!REDIS_URL) {
   getAsync = redisIsDisabled
   setAsync = redisIsDisabled
 } else { 
-  
-  //let visits = 0
-
+    
   const client = redis.createClient({
     url: REDIS_URL 
   })

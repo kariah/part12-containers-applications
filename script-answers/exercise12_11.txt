@@ -1,0 +1,40 @@
+$ winpty docker exec -it todo-backend_redis_1 sh 
+# redis-cli KEYS *
+1) "todos" 
+#redis-cli
+127.0.0.1:6379> GET todos
+"1"
+# redis-cli incr todos
+(integer) 1
+#redis-cli
+127.0.0.1:6379>
+127.0.0.1:6379> GETSET todos 9001
+"2"
+127.0.0.1:6379> GET todos
+"9001"
+
+
+http://localhost:3000/statistics
+{
+added_todos: "9001"
+}
+
+
+http://localhost:3000/statistics
+{
+added_todos: "9002"
+}
+
+127.0.0.1:6379> DEL todos
+(integer) 1
+127.0.0.1:6379>
+
+http://localhost:3000/statistics
+{
+added_todos: null
+}
+
+http://localhost:3000/statistics
+{
+added_todos: "1"
+}

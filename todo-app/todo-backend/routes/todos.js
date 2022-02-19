@@ -6,18 +6,25 @@ let todos = 0
 
 /* GET todos listing. */
 router.get('/', async (_, res) => {
-  const todos = await Todo.find({})
-  res.send(todos);
+  const todosList = await Todo.find({}) 
+  res.send(todosList);
 });
 
 /* POST todo to listing. */
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) => { 
+  todos = await redis.getAsync("todos");
+
+  // console.log('todos 1', todos)  
+
   const todo = await Todo.create({
     text: req.body.text,
     done: false
   })
    
   todos++
+
+  // console.log('todos 2', todos)  
+
   redis.setAsync('todos', todos)
 
   // const result = await redis.getAsync("todos");
