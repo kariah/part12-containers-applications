@@ -1,11 +1,11 @@
-const Todo = ({ todo, doneInfo, notDoneInfo }) => { 
+const Todo = ({ todo, info }) => { 
     return (
       <>
         <div style={{ display: 'flex', justifyContent: 'space-between', maxWidth: '70%', margin: 'auto' }}>
             <span>
               {todo.text} 
             </span>
-            {todo.done ? doneInfo : notDoneInfo}
+            {info}
           </div>
       </>
     )
