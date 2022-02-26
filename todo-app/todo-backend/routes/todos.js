@@ -7,6 +7,9 @@ let todos = 0
 /* GET todos listing. */
 router.get('/', async (_, res) => {
   const todosList = await Todo.find({}) 
+
+  // console.log('todosList', todosList)  
+
   res.send(todosList);
 });
 
@@ -16,7 +19,7 @@ router.post('/', async (req, res) => {
 
   todos = todos == null ? 0 : todos
   
-  // console.log('todos 1', todos)  
+ 
 
   const todo = await Todo.create({
     text: req.body.text,

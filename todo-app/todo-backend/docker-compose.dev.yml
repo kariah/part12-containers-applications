@@ -6,7 +6,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: database
+      MONGO_INITDB_DATABASE: database 
+      MONGO_URL: 'mongodb://root:example@localhost:3456/database'
     volumes:
       - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - mongo_data:/data/db
@@ -17,5 +18,19 @@ services:
     command: ['redis-server', '--appendonly', 'yes'] # Overwrite the CMD
     volumes: # Declare the volume
       - ./redis_data:/data
+    environment: 
+      REDIS_URL: redis://localhost:6379 
+  app:
+    image: todo-backend
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3001:3000
+    container_name: todo-backend
+  debug-helper:
+    image: busybox
 volumes:
   mongo_data:
