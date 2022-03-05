@@ -10,7 +10,7 @@ services:
       - ./todo-frontend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
     ports:
       - 3000:3000
-    container_name: todo-app-frontend   
+    container_name: todo-app  
 
   mongo:
     image: mongo
@@ -32,7 +32,7 @@ services:
     volumes: # Declare the volume
       - ./todo-backend/redis_data:/data
 
-  backend:
+  server:
     image: todo-backend
     build:
        context: ./todo-backend/
@@ -41,7 +41,7 @@ services:
       - ./todo-backend/:/usr/src/app
     ports:
       - 3001:3001
-    container_name: todo-app-backend
+    container_name: todo-server
     environment:  
       - MONGO_URL="mongodb://root:example@mongo:27017"
       - REDIS_URL=redis://redis:6379  
