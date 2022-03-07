@@ -8,7 +8,7 @@ COPY --chown=node:node . .
 
 RUN npm ci 
 
-ENV DEBUG=playground:*
+ENV DEBUG=todo-backend:*
 
 ENV PORT=3001
 
