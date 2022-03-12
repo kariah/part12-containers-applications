@@ -9,7 +9,7 @@ COPY --chown=node:node . .
 RUN npm ci 
  
 ENV DEBUG=frontend:*
-
-# ENV REACT_APP_BACKEND_URL=http://localhost:4000/
  
-CMD npm startdock
+ENV BACKEND_URL=http://localhost:3001/
+ 
+CMD npm start

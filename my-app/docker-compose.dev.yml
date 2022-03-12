@@ -4,14 +4,13 @@ services:
   app:
     image: frontend-dev
     build:
-      context: ./frontend/ # The context will pick this directory as the "build context"
-      dockerfile: ./frontend/dev.Dockerfile # This will simply tell which dockerfile to read
+      context: ./frontend/  
+      dockerfile: ./frontend/dev.Dockerfile 
     volumes:
-      - ./frontend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+      - ./frontend/:/usr/src/app  
     ports:
        - 3000:3000
     container_name: my-app-frontend-dev 
-    
   server:
     image: backend-dev
     build:
@@ -21,19 +20,16 @@ services:
       - ./backend/:/usr/src/app
     ports:
       - 4000:4000
-    container_name: my-app-server-dev
-    # environment:  
-    #   - MONGO_URL="mongodb://root:example@mongo:27017" 
+    container_name: my-app-server-dev 
+  #TODO: 
+  # environment:
+  #   - MONGO_URL= graphql ympäristön url
   debug-helper:
     image: busybox 
-
   nginx:
     image: nginx:1.20.1
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - 8080:80
-    container_name: my-app-reverse-proxy 
-    
-volumes:
-  mongo_data:
+    container_name: my-app-reverse-proxy-dev 
